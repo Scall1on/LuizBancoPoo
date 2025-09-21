@@ -1,0 +1,37 @@
+Conceitos
+
+PERGUNTA 1: a) Qual é a finalidade da BoletoInterface neste sistema? Por que é importante usá-la?
+
+RESPOSTA: Essa interface é necessária pois ela define o "contrato" de todas as classes devem seguir.
+Em minha pesquisa, ela garante: Padronização, polimorfismo e manutenção do código
+
+A padronização ao exigir que todas as classes do boleto tenham os métodos: de gerar código de barrar, validar e renderizar, pois todos os outros boletos para quaisquer bancos irão seguir esse mesmo padrão de funcionalidade.
+
+Já o polimorfismo pois o sistema pode tratar diferentes boletos como se fossem do mesmo tipo, usando as referências da interface.
+
+E na facilidade de manutenção, pois caso seja preciso adicionar um novo banco ao sistema, basta criar uma nova classe que implemente a interface.
+Isso vai evitar mudanças grandes no código e garante que o novo boleto vai ter todos os métodos essenciais exigidos pelo sistema.
+
+PERGUNTA 2: b) Explique por que a classe BoletoAbstrato precisa ser declarada como abstract. O que aconteceria se ela não fosse abstrata?
+
+RESPOSTA: Existem alguns motivos do porquê ela precisar ser classificada como abstract:
+
+motivo 1 (erro de compilação): no php, não é possível declar apenas um método como abstract, então caso tentássemos declarar algo como:
+Class: BoletoAbstrato {
+	abstract protected function renderizarHtml();
+	}
+Ela retornaria este erro:
+Fatal error: Abstract function renderizarHtml() cannot be declared in non-abstract class BoletoAbstrato
+Ou seja, não é possível declarar um MÉTODO abstrato, em uma CLASSE concreta(não abstrata).
+
+Motivo 2 (quebra de contrato): A intenção é obrigar as subclasses a implementarem os métodos específicos, como renderizarHtml e renderizarPdf. Se não fosse abstrata, perderia essa obrigatoriedade.
+
+PERGUNTA 3: O método renderizar() é implementado na classe abstrata, mas delega a execução para métodos abstratos. Qual é a vantagem dessa abordagem em termos de reuso e manutenção?
+
+RESPOSTA:A vantagem de utilizar ele método é basicamente o mesmo do porque utilizar BoletoInterface, ela garante uma manutenção, flexibilidade, padronização.
+
+1 - Padronização pois todos os boletos terão o método rendereizar, mas com personalização em partes necessárias, como vai ser exigido na questão 3 onde é pedido uma extensão.
+
+2 - Manutenção porque caso seja necessário alterar a lógica, só será necessário alterar a classe abstrata, e todas as subclasses vão utilizar automaticamente o novo comportamento.
+
+3 - flexibilidade pois cada banco pode ter sua própria implementação dos métodos abstratos, como é o caso de renderizarHtml e renderizarPdf, sem afetar o funcionamento geral do sistema.
