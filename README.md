@@ -1,0 +1,1 @@
+O .txt é o arquivo que tem as resposas da 1 questão com as perguntas subjetivas, boletoBB seria o código solicitad para o banco do Brasil, e o boletoBitau seria o código extendido que a terceira questão pede, e enviei também o código base pq achei que ficaria mais completo assim
